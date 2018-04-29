@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Register Portal</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width", initial scale="1">
+  <link rel="shortcut icon" href="logo.png" type="image/png">
+	<link rel="stylesheet" href="bootstrap-3.3.7\dist\css\bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="jquery.min.js"></script>
+	<script src="bootstrap-3.3.7\dist\js\bootstrap.min.js"></script>
+	<style type="text/css">
+		.card {
+
+			margin: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  width: 550px;
+}
+
+.header {
+    background-color: white;
+    padding: 10px;
+    font-size: 20px;
+    border-bottom: solid;
+}
+
+.containr {
+background-color: white;
+   padding: 10px;
+}
+	</style>
+<script type="text/javascript">
+  function validation()
+  {
+    var cp=document.forms["Register"]["cpwd"].value;
+    var p=document.forms["Register"]["pwd"].value;
+    if(cp!=p)
+    {
+      document.getElementById("p2").innerHTML = "password do not match";
+      return false;
+
+    }
+    else
+    {
+      return true;
+    }
+
+  }
+  var express = require('express');
+app.use(express.bodyParser());
+app.post('/submit',function(request,response){
+console.log(request.body.data);
+});
+</script>
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+  
+<div id="registration" class="container text-center" style="background-image: url(back3.jpg); width: 100%; height:1000px;"> 
+		<div class="card">
+			<div class="header">
+					<h1 style="color: blue;"><font size="10px"><strong>Register Now</font></h1></p>
+				</div>
+<div class="containr">
+	<form name="Register" onsubmit="return validation()" method="post" action="http://127.0.0.1:8080/myaction" style="padding-left: 20px; padding-right: 20px;">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" name="name" required="required">
+  </div>
+   <div class="form-group">
+    <label for="email">Email Id</label>
+    <input type="text" class="form-control" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" name="email" required="required" oninvalid="this.setCustomValidity('Enter Correct Email ID')"  oninput="this.setCustomValidity('')" title="Enter Correct Email ID">
+  </div>
+<div class="form-group">
+    <label for="add">Address</label>
+    <input type="text" class="form-control" id="addr" name="addr" required="required">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password</label>
+    <input type="password" class="form-control"  name="pwd" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" oninvalid="this.setCustomValidity('Password shoud conatin one uppercase, one number, one special character and minimum length should be 6')"  oninput="this.setCustomValidity('')" title="Password shoud conatin one uppercase, one number, one special character and minimum length should be 6">
+  </div>
+  <div class="form-group">
+    <label for="cpwd">Confirm Password</label>
+    <input type="password" class="form-control" name="cpwd" >
+    <strong><p id="p2" style="color: red;"></p></strong>
+  </div>
+  <br>
+  <button type="submit" style="background-color: blue;" class="btn btn-default">Submit</button>
+</form>
+			</div>		
+</div>
+</div>
+</body>
+</html>
